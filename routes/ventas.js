@@ -3,21 +3,11 @@ const routes = express.Router();
 var jwt = require('jsonwebtoken');
 
 
-// Generar TOKEN
-routes.get('/login', function(req, res){
-   const user = {id: 3  };
-   const token = jwt.sign({ user }, 'my_secret_password');
 
-   res.json({
-      token : token 
-   })
-
-
-});
 
 // Seleccionar todas las ventas
 routes.get('/ventas', ensureToken , function  (req, res){
-   jwt.verify(req.token, 'my_secret_password', function(err, data){
+   jwt.verify(req.token, 'my_secret_key', function(err, data){
       if (err){
          res.send('Token Incorrecto')
       }
@@ -40,7 +30,7 @@ routes.get('/ventas', ensureToken , function  (req, res){
  // Insertar una venta
   routes.post('/ins_venta', ensureToken, function (req, res) {
   
-   jwt.verify(req.token, 'my_secret_password', function(err, data){
+   jwt.verify(req.token, 'my_secret_key', function(err, data){
        if (err){
          res.send('Token Incorrecto')
        }
@@ -64,7 +54,7 @@ routes.get('/ventas', ensureToken , function  (req, res){
   // Actualizar una venta
   routes.put('/ventas/:cod_venta', ensureToken, function (req, res){
 
-  jwt.verify(req.token, 'my_secret_password', function(err, data){
+  jwt.verify(req.token, 'my_secret_key', function(err, data){
    if (err){
       res.send('Token Incorrecto')
     }
@@ -89,7 +79,7 @@ routes.get('/ventas', ensureToken , function  (req, res){
 
 // Borrar una Venta
 routes.delete('/ventas/:cod_venta', ensureToken, function (req, res){
-   jwt.verify(req.token, 'my_secret_password', function(err, data){
+   jwt.verify(req.token, 'my_secret_key', function(err, data){
        if (err){
          res.send('Token Incorrecto')
        }

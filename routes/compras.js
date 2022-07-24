@@ -4,7 +4,7 @@ var jwt = require('jsonwebtoken');
 
 // Seleccionar todas las compras
 routes.get('/compras', ensureToken , function (req, res){
-   jwt.verify(req.token, 'my_secret_password', function(err, data){
+   jwt.verify(req.token, 'my_secret_key', function(err, data){
      if (err){
       res.send('Token Incorrecto')
      }
@@ -25,7 +25,7 @@ routes.get('/compras', ensureToken , function (req, res){
 
  // Insertar una compra
  routes.post('/ins_compra', ensureToken, function (req, res) {
-   jwt.verify(req.token, 'my_secret_password', function(err, data){
+   jwt.verify(req.token, 'my_secret_key', function(err, data){
       if (err){
          res.send('Token Incorrecto')
       }
@@ -48,7 +48,7 @@ routes.get('/compras', ensureToken , function (req, res){
 
   // Actualizar una compra
   routes.put('/compras/:cod_compra', ensureToken , function (req, res){
-   jwt.verify(req.token, 'my_secret_password', function(err, data){
+   jwt.verify(req.token, 'my_secret_key', function(err, data){
             if (err) {
                res.send('Token Incorrecto')
             }
@@ -73,7 +73,7 @@ routes.get('/compras', ensureToken , function (req, res){
 
   // Borrar una Compra
   routes.delete('/compras/:cod_compra', ensureToken , function  (req, res) {
-   jwt.verify(req.token, 'my_secret_password', function(err, data){
+   jwt.verify(req.token, 'my_secret_key', function(err, data){
         if (err){
          res.send('Token Incorrecto')
         }
@@ -95,16 +95,6 @@ routes.get('/compras', ensureToken , function (req, res){
   
    })
 
-   routes.get('/login', function(req, res){
-      const user = {id: 3  };
-      const token = jwt.sign({ user }, 'my_secret_password');
-   
-      res.json({
-         token : token 
-      })
-   
-   
-   });
    
    function ensureToken(req , res , next){
      const bearerHeader = req.headers["authorization"]
