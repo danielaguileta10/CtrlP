@@ -1,0 +1,91 @@
+### Seleccion todas las ventas
+GET http://localhost:3000/ventas HTTP/1.1
+
+
+### Insertar venta
+POST http://localhost:3000/ins_venta HTTP/1.1
+Content-Type: application/json
+
+{
+
+  "cod_cliente": 4 ,
+  "cod_forma_pago": 3,
+  "no_factura": "11111111" ,
+  "fec_venta": "2012-10-06",
+  "isv": 18 ,
+  "cod_producto": 3,
+  "cantidad": 10,
+  "precio": 5,
+  "descuento": 1
+
+
+}
+
+### Actualizar venta
+PUT http://localhost:3000/ventas/23 HTTP/1.1
+Content-Type: application/json
+
+{
+
+  "cod_cliente": 2 ,
+  "cod_forma_pago": 2,
+  "no_factura": "1111" ,
+  "fec_venta": "2020-11-10",
+  "isv": 15 ,
+  "cod_producto": 3 ,
+  "cantidad": 11,
+  "precio": 3,
+  "descuento": 1
+
+
+}
+
+### Borrar venta
+DELETE http://localhost:3000/ventas/8 HTTP/1.1
+Content-Type: application/json
+
+
+
+### Seleccion todas las compras
+GET http://localhost:3000/compras HTTP/1.1
+
+
+### Insertar compra
+POST http://localhost:3000/ins_compra HTTP/1.1
+Content-Type: application/json
+
+{
+
+  "cod_proveedor": 4 ,
+  "cod_forma_pago": 2,
+  "no_factura": "0101011010" ,
+  "fec_compra": "2012-10-06",
+  "cod_producto": 2 ,
+  "cantidad": 10,
+  "precio": 5
+
+}
+
+
+### Actualizar compra
+PUT http://localhost:3000/compras/8 HTTP/1.1
+Content-Type: application/json
+
+{
+
+  "cod_compra": 8 ,
+  "cod_proveedor": 4 ,
+  "cod_forma_pago": 2,
+  "no_factura": "111111" ,
+  "fec_compra": "2012-10-06",
+  "cod_producto": 2 ,
+  "cantidad": 10,
+  "precio": 5
+
+
+}
+
+### Borrar compra
+DELETE http://localhost:3000/compras/8 HTTP/1.1
+Content-Type: application/json
+
